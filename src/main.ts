@@ -147,4 +147,9 @@ async function run(): Promise<void> {
     setOutput('published', published)
 }
 
-run()
+// eslint-disable-next-line github/no-then
+run().then(() => info('finish'))
+
+process.once('beforeExit', () => {
+    info('before exit')
+})
